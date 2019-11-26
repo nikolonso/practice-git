@@ -1,0 +1,104 @@
+docker run -i -t ubuntu /bin/bash
+docker help 
+docker ps 
+docker ps -a 
+docker ps -l 
+docker run --name TESTNAME -ti ubuntu /bin/bash
+docker start TESTNAME
+docker stop TESTNAME    
+docker  resart TESTNAME
+
+docker attache TESTNAME
+
+docker rm   TESTNAME
+
+docker rm `docker ps -aq` 
+
+
+===========
+
+
+docker run --name Mytestname -d ubuntu /bin/bash -c "while true; do echo hellp vassy; sleep 1; done" 
+
+docker logs Mytestname 
+
+docker logs -f Mytestname
+
+docker logs --tail 10 Mytestname
+docker  logs -ft Mytestname
+
+docker  top Mytestname
+
+docker ps -n 1
+
+docker inspect Mytestname
+
+docker inspect --format='{{.NetworkSettings.Networks.bridge.IPAddress}}' Mydemon  
+
+
+
+docker run -ti --name newContainer ubuntu:12.04 /bin/bash  
+docker images 
+docker pull nginx 
+docker images ubuntu
+docker images nginx 
+docker search ansible 
+
+
+
+docker commit qwe ubuntu-vim
+
+docker commit -m='this is ubuntu with vim' --autho='nokhrimenko' qwe ubuntu-vim2
+
+
+
+
+=====================
+FROM ubuntu 
+MAINTAINER nokhrimenko@Phoenixit.ru
+RUN apt update 
+RUN apt install -y vim
+
+docker build -t='ubuntuvim:v2' .dockerfile 
+docker images
+
+docker run -ti --name myVim ubuntuvim:v2  /bin/bash 
+
+
+FROM ubuntu 
+MAINTAINER nokhrimenko@Phoenixit.ru
+RUN apt update 
+RUN apt install -y vim
+EXPOSE 80 
+CMD /bin/bash
+#CMD [/bin/bash]
+ENTRYPOINT [ "/bin/bash" ]
+WORKDIR /home
+ENV JAVA_HOME /var/lib/jvm/jdk
+USER nokhrimenko
+VOLUME /opt/project
+ADD temp.txt /home
+COPY temp.txt /home
+ONBUILD ADD . /app/src
+
+
+
+
+
+
+docker run -p8080:80 -ti nginx bash 
+-d в фоне 
+
+
+docker run -p80:80 -p443:443 nginx пробпрос на вшение порты 
+docker run -p80:80 -v /home:/app -ti nginx bash  проброс папки 
+
+
+docker run -e "HOME=/app" nginx 
+docker run --env-file=.env nginx 
+
+
+
+
+
+

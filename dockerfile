@@ -1,5 +1,8 @@
-FROM ubuntu 
-MAINTAINER nokhrimenko@Phoenixit.ru
-RUN apt update 
-RUN apt install -y vim
+FROM php:7.3-cli
+MAINTAINER at-consulting
+RUN apt update && apt install composer 
+WORKDIR /app
+COPY . /app
+
+
 
