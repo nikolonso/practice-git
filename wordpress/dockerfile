@@ -2,8 +2,8 @@ FROM ubuntu
 
 RUN apt-get update && apt-get -y install \
     apache2 \
-    php7 \
-    php7-mysql \
+    php5 \
+    php5-mysql \
     supervisor \
     wget
 
